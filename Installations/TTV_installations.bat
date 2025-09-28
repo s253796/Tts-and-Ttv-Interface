@@ -18,6 +18,10 @@ echo Installing imageio-ffmpeg...
 pip install imageio-ffmpeg
 if %errorlevel% neq 0 echo Failed to install imageio-ffmpeg && pause && exit /b 1
 
+echo Installing opencv-python...
+pip install opencv-python
+if %errorlevel% neq 0 echo Failed to install opencv-python && pause && exit /b 1
+
 echo Installing PyTorch with CUDA support...
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 if %errorlevel% neq 0 echo Failed to install PyTorch with CUDA && pause && exit /b 1
@@ -26,3 +30,4 @@ echo.
 echo CogVideoX Text-to-Video installation complete!
 echo Press any key to close...
 pause >nul
+
