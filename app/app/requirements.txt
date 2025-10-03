@@ -1,0 +1,8 @@
+transformers
+datasets
+torch
+soundfile          
+diffusers
+accelerate
+Pillow
+tk
