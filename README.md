@@ -2,6 +2,10 @@
 Repository compilation for a Tkinter GUI to create both video and/or speech files from text commands with integrated text generation capabilities.
 Working GUI application is in app folder.
 
+##  For Installation
+
+### Use TTS_installations and TTV_installations to install dependencies
+
 ## Hugging Face AI Models
 - Text generation: GPT-2
 - Text to speech: SpeechT5
