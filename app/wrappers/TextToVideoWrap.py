@@ -1,4 +1,7 @@
-class CogVideoXGenerator:
+from utils.decorators import timeit, memoize
+from wrappers.base_models import BaseModel, LoggingMixin
+
+class CogVideoXGenerator(BaseModel, LoggingMixin):
     """CogVideoX wrapper for text-to-video generation using diffusers"""
     
     def __init__(self):
@@ -32,7 +35,8 @@ class CogVideoXGenerator:
         except Exception as e:
             print(f"Error loading video model: {e}")
             self._is_loaded = False
-    
+    @timeit
+    @memoize
     def generate_video(self, prompt, output_filename="video_output.mp4"):
         """Generate video from text prompt and save as MP4 file"""
         if not self._is_loaded:

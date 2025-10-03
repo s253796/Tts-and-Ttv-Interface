@@ -1,5 +1,9 @@
-class GPT2TextGenerator:
+from utils.decorators import timeit, memoize
+from wrappers.base_models import BaseModel, LoggingMixin
+
+class GPT2TextGenerator(BaseModel, LoggingMixin):
     """A wrapper class for GPT2 text generation"""
+
     def __init__(self):
         """Default settings for text generator"""
         self.model_name = "openai-community/gpt2"
@@ -15,7 +19,8 @@ class GPT2TextGenerator:
         except Exception as e:
             print(f"Error loading model: {e}")
             self.is_loaded = False
-
+    @timeit
+    @memoize
     def generate_text(self, prompt, max_length=50):
         """Generate text from prompt with max of 50 tokens"""
         if not self.is_loaded:

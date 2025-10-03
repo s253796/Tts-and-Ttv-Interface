@@ -1,4 +1,7 @@
-class SpeechT5TextToSpeech:
+from utils.decorators import timeit, memoize
+from wrappers.base_models import BaseModel, LoggingMixin
+
+class SpeechT5TextToSpeech(BaseModel, LoggingMixin):
     """SpeechT5 wrapped for easier access using enapsulation methods"""
     
     def __init__(self):
@@ -25,7 +28,8 @@ class SpeechT5TextToSpeech:
         except Exception as e:
             print(f"Error loading text-to-speech model: {e}")
             self._is_loaded = False
-    
+    @timeit
+    @memoize
     def generate_speech(self, text, output_filename="audio_output.wav"):
         """Generate speech from text and save as audio file"""
         if not self._is_loaded:
