@@ -88,11 +88,11 @@ class OOPPanel(ttk.LabelFrame):
     def __init__(self, master):
         super().__init__(master, text="OOP Explanation (short)")
         msg = (
-            "- Inheritance: custom frames extend tkinter base classes\n"
-            "- Polymorphism: one run handler works for different models\n"
-            "- Encapsulation: ModelRunner hides model details from GUI\n"
-            "- Overriding: adapters override base processing methods\n"
-            "- Decorators: (OOP lane) add logging/validation around calls\n"
+            "- Encapsulation: AI wrappers use private attributes (_pipe, _is_loaded) and ModelRunner hides implementation details\n"
+            "- Inheritance: GUI panels extend tkinter classes; AI wrappers inherit from BaseModel and LoggingMixin (multiple inheritance)\n"
+            "- Multiple Decorators: @timeit and @memoize stacked on AI generation methods to add timing and caching\n"
+            "- Polymorphism: Different AI models implement their own generation methods (generate_text, generate_speech, generate_video)\n"
+            "- Method Overriding: Each AI wrapper overrides base class methods with model-specific implementations\n"
         )
         self.text = tk.Text(self, height=8, width=44, wrap="word")
         self.text.insert("1.0", msg)
