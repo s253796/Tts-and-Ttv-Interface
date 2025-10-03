@@ -1,7 +1,7 @@
 from transformers import pipeline
-from utils import timeit, memoize
+from app.utils.decorators import timeit, memoize
 
-# Base class (encapsulation: hides model details)
+# base class (encapsulation: hides model details)
 class BaseModel:
     def __init__(self, model_id, task):
         self._model_id = model_id
@@ -17,12 +17,12 @@ class BaseModel:
         pipe = self.load()
         return pipe(x)
 
-# Logging mixin for multiple inheritance
+# logging mixin for multiple inheritance
 class LoggingMixin:
     def log(self, message):
         print("[LOG]:", message)
 
-# Text model: multiple inheritance + method overriding
+#tText model: multiple inheritance + method overriding
 class TextModel(BaseModel, LoggingMixin):
     def __init__(self, model_id):
         super().__init__(model_id, task="text-classification")

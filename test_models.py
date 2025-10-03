@@ -1,24 +1,13 @@
-# test_models.py
-from models import TextModel, AudioModel
+from app.wrappers.text_model import TextModel
+from app.wrappers.audio_model import AudioModel
 
-# Small test text for the TextModel
-test_text = "I really enjoy learning AI and Python!"
+print("=== Testing TextModel ===")
+text_model = TextModel("MyTextModel")
+result_text = text_model.run("Hello world!")
+print("Result:", result_text)
 
-# Initialize TextModel
-text_model = TextModel("distilbert/distilbert-base-uncased-finetuned-sst-2-english")
-print("Running TextModel...")
-text_result = text_model.run(test_text)
-print("TextModel result:", text_result)
-print("-" * 40)
+print("=== Testing AudioModel ===")
+audio_model = AudioModel("MyAudioModel")
+result_audio = audio_model.run("sample_audio.wav")
+print("Result:", result_audio)
 
-# Small test audio for AudioModel
-# Replace 'sample_audio.wav' with a small audio file you have
-audio_file = "sample_audio.wav"
-
-audio_model = AudioModel("openai/whisper-small")
-print("Running AudioModel...")
-try:
-    audio_result = audio_model.run(audio_file)
-    print("AudioModel result:", audio_result)
-except FileNotFoundError:
-    print(f"Audio file '{audio_file}' not found. Please add a small .wav file to test.")
