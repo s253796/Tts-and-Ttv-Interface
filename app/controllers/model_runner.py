@@ -1,18 +1,22 @@
 from typing import Dict, Any, Optional
+import sys
+from pathlib import Path
 
 # Wrapped models inside app/wrappers/
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 try:
-    from app.wrappers.gpt2_text_generation_wrapped import GPT2TextGenerator
+    from wrappers.gpt2_text_generation_wrapped import GPT2TextGenerator
 except Exception:
     GPT2TextGenerator = None
 
 try:
-    from app.wrappers.TexttospeechWrap import SpeechT5TextToSpeech
+    from wrappers.TexttospeechWrap import SpeechT5TextToSpeech
 except Exception:
     SpeechT5TextToSpeech = None
 
 try:
-    from app.wrappers.TextToVideoWrap import CogVideoXGenerator
+    from wrappers.TextToVideoWrap import CogVideoXGenerator
 except Exception:
     CogVideoXGenerator = None
 
